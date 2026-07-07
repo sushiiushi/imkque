@@ -53,7 +53,7 @@ const booksDatabase = [
 // --- ENDPOINTS ---
 
 // 1. Root & Auth
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'loginpage.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
@@ -109,7 +109,7 @@ app.get('/api/books-by-category', (req, res) => {
 // 5. Logout
 app.get('/api/logout', (req, res) => {
     req.session.destroy();
-    res.redirect('/loginpage.html');
+    res.redirect('/index.html');
 });
 
 app.listen(PORT, () => console.log(`Server berjalan di http://localhost:${PORT}`));
