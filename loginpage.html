@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="left-section">
+            <div class="form-wrapper">
+                <h2>Selamat datang!</h2>
+                <p class="subtitle">Silahkan masukkan detail anda untuk menggunakan layanan.</p>
+
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="contoh@gmail.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Kata Sandi</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" placeholder="masukkan password anda" required>
+                            <i class="fa-regular fa-eye toggle-password"></i>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Masuk</button>
+                </form>
+
+                <div class="divider">
+                    <span>atau</span>
+                </div>
+
+                <button type="button" class="btn btn-primary" onclick="window.location.href='daftar.html'">Daftar</button>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="logo-wrapper">
+                <img src="logofst.png" alt="Logo UIN FST" class="logo">
+                <h1>Layanan<br>Perpustakaan FST</h1>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                window.location.href = data.redirectTo;
+            } else {
+                alert(data.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Gagal terhubung ke server backend.');
+        }
+    });
+    </script>
+
+</body>
+</html>

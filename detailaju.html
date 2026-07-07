@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Pengajuan - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <style>
+        /* --- STYLE KHUSUS DETIL PENGAJUAN (SPLIT SECTION) --- */
+        .submission-card-container {
+            background-color: #F4F7FC;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 40px;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        /* Pembatas Vertikal di Tengah */
+        .submission-card-container::before {
+            content: "";
+            position: absolute;
+            top: 40px;
+            bottom: 40px;
+            left: 55%;
+            width: 2px;
+            background-color: #202E43;
+            opacity: 0.8;
+        }
+
+        /* Bagian Kiri: Form Informasi */
+        .form-left-section {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .form-group-detail {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group-detail label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #202E43;
+        }
+
+        .form-group-detail input {
+            background-color: #FFFFFF;
+            border: 1.5px solid #7F8C8D;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            color: #555555;
+            width: 100%;
+            outline: none;
+        }
+
+        /* Area Tombol Aksi */
+        .action-button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .btn-decision {
+            flex: 1;
+            border: none;
+            padding: 12px 0;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #FFFFFF;
+            text-align: center;
+            transition: opacity 0.2s;
+        }
+
+        .btn-approve {
+            background-color: #4AA900; /* Hijau Terima */
+        }
+
+        .btn-reject {
+            background-color: #A93226; /* Merah Tolak */
+        }
+
+        .btn-decision:hover {
+            opacity: 0.9;
+        }
+
+        /* Bagian Kanan: Visual Buku */
+        .book-right-section {
+            width: 45%;
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge-top-info {
+            background-color: #F3B600;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 20px;
+            border-radius: 6px;
+        }
+
+        .book-cover-box {
+            background-color: #FFFFFF;
+            padding: 10px;
+            border-radius: 12px;
+            border: 2px solid #202E43;
+            max-width: 220px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .book-cover-box img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .book-meta-tag {
+            width: 100%;
+            max-width: 240px;
+            text-align: center;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .tag-title {
+            background-color: #202E43;
+            color: #FFFFFF;
+        }
+
+        .tag-author {
+            background-color: #F3B600;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logofst.png" alt="Logo UIN FST">
+                <div class="logo-text">
+                    <span class="fac">FAKULTAS</span>
+                    <span class="dept">SAINS DAN TEKNOLOGI</span>
+                </div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <nav class="sidebar-menu">
+                <a href="welpageadmin.html" class="menu-item">Dashboard</a>
+                <a href="bukperadmin.html" class="menu-item">Buku Perpustakaan</a> 
+                <a href="pengajuanadmin.html" class="menu-item active">> Pengajuan</a>
+                <a href="riwayatadmin.html" class="menu-item">Riwayat</a>
+                <a href="#" class="menu-item">Pengaturan</a>
+            </nav>
+
+            <a href="loginpage.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Detail Pengajuan</h1>
+                <hr class="header-line">
+            </header>
+
+            <div class="dashboard-body">
+                
+                <div class="submission-card-container">
+                    
+                    <div class="form-left-section">
+                        <div class="form-group-detail">
+                            <label>Nama Pengaju</label>
+                            <input type="text" value="Zarah Rumampuk" readonly>
+                        </div>
+
+                        <div class="form-group-detail">
+                            <label>Program Studi</label>
+                            <input type="text" value="Kimia" readonly>
+                        </div>
+
+                        <div class="form-group-detail">
+                            <label>Tanggal dan Jam Pengajuan</label>
+                            <input type="text" value="12/06/2026 - 01/07/2026" readonly>
+                        </div>
+
+                        <div class="action-button-group">
+                            <button class="btn-decision btn-approve" onclick="window.location.href='menerimaajuan.html'">Terima</button>
+                            <button class="btn-decision btn-reject" onclick="window.location.href='menolakajuan.html'">Tolak</button>
+                        </div>
+                    </div>
+
+                    <div class="book-right-section">
+                        <div class="badge-top-info">Buku dipinjam</div>
+                        
+                        <div class="book-cover-box">
+                            <img src="the-mathematical-universe.jpg" alt="The Mathematical Universe">
+                        </div>
+
+                        <div class="book-meta-tag tag-title">The Mathematical Universe</div>
+                        <div class="book-meta-tag tag-author">William Dunham</div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Buku - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <link rel="stylesheet" href="riwtol-style.css">
+    <style>
+        /* Penyesuaian khusus untuk halaman Info & Aju Buku */
+        .info-row-aligned {
+            display: flex;
+            align-items: flex-start;
+            font-size: 18px;
+            color: #333333;
+        }
+
+        .synopsis-text {
+            font-size: 14px;
+            color: #1a202c;
+            line-height: 1.6;
+            text-align: justify;
+            padding-left: 5px;
+        }
+
+        .btn-submit-aju {
+            background-color: #1a365d;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: fit-content;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: background-color 0.2s;
+        }
+
+        .btn-submit-aju:hover {
+            background-color: #2d689c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logofst.png" alt="Logo UIN FST">
+                <div class="logo-text">
+                    <span class="fac">FAKULTAS</span>
+                    <span class="dept">SAINS DAN TEKNOLOGI</span>
+                </div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <nav class="sidebar-menu">
+                <a href="welpageuser.html" class="menu-item">Dashboard</a>
+                <a href="bukperuser.html" class="menu-item active">> Buku Perpustakaan</a>
+                <a href="buksem.html" class="menu-item">Buku Disematkan</a>
+                <a href="riwuser.html" class="menu-item">Riwayat</a>
+                <a href="#" class="menu-item">Pengaturan</a>
+            </nav>
+
+            <a href="login.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Infromasi Buku</h1>
+                <hr class="header-line">
+            </header>
+
+            <div class="detail-rejected-container">
+                
+                <div class="main-book-title-banner">
+                    The Mathematical Universe
+                </div>
+
+                <div class="detail-flex-layout">
+                    <div class="book-cover-wrapper">
+                        <img src="the-mathematical-universe.jpg" alt="The Mathematical Universe Cover" class="cover-image">
+                    </div>
+
+                    <div class="book-info-spec">
+                        
+                        <div class="info-row-aligned">
+                            <div class="info-label">Penulis</div>
+                            <div class="info-value" style="padding-top: 6px;">William Dunham</div>
+                        </div>
+
+                        <div class="info-row-aligned">
+                            <div class="info-label">Tahun</div>
+                            <div class="info-value" style="padding-top: 6px;">1998</div>
+                        </div>
+
+                        <div class="info-row-aligned">
+                            <div class="info-label">Kategori</div>
+                            <div class="info-value" style="padding-top: 6px;">Matematika</div>
+                        </div>
+
+                        <div class="info-row-aligned" style="flex-direction: column; gap: 10px; align-items: flex-start; width: 100%;">
+                            <div class="info-label">Sinopsis</div>
+                            <div class="synopsis-text">
+                                "The Mathematical Universe" adalah kumpulan esai pendek yang solid, masing-masing membahas topik matematika tertentu. Judul-judulnya beragam, mulai dari "Masalah Isoperimetri" hingga "Di Mana Para Wanita?". Penulis Dunham berhasil mempertahankan nada percakapan sambil merujuk pada diagram, persamaan, dan argumen yang ketat di sepanjang buku.
+                            </div>
+                        </div>
+
+                        <div class="info-row-aligned" style="margin-top: 5px;">
+                            <div class="info-label">Status</div>
+                            <div class="info-value" style="padding-top: 6px;">Baik, tersedia</div>
+                        </div>
+
+                        <button class="btn-submit-aju" onclick="window.location.href='formpengajuan.html';">
+                            Aju Peminjaman
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard User - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logofst.png" alt="Logo UIN FST">
+                <div class="logo-text">
+                    <span class="fac">FAKULTAS</span>
+                    <span class="dept">SAINS DAN TEKNOLOGI</span>
+                </div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <nav class="sidebar-menu">
+                <a href="welpageuser.html" class="menu-item active">> Dashboard</a>
+                <a href="bukperuser.html" class="menu-item">Buku Perpustakaan</a> 
+                <a href="buksem.html" class="menu-item">Buku Disematkan</a>
+                <a href="riwuser.html" class="menu-item">Riwayat</a>
+                <a href="#" class="menu-item">Pengaturan</a>
+            </nav>
+
+            <a href="/api/logout" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Selamat datang, <span id="username-display" class="username">Memuat...</span></h1>
+                <hr class="header-line">
+            </header>
+
+            <div class="dashboard-body">
+                
+                <h2 class="section-title text-center">Status Peminjaman</h2>
+                
+                <div class="status-container">
+                    
+                    <div class="status-card card-yellow font-white">
+                        <span id="count-terkirim" class="status-number">0</span>
+                        <span class="status-label">Terkirim</span>
+                    </div>
+
+                    <div class="status-card card-outline font-blue">
+                        <span id="count-disetujui" class="status-number">0</span>
+                        <span class="status-label">Disetujui</span>
+                    </div>
+
+                    <div class="status-card card-yellow font-white">
+                        <span id="count-ditolak" class="status-number">0</span>
+                        <span class="status-label">Ditolak</span>
+                    </div>
+
+                    <div id="status-detail-box" class="status-detail-box">
+                    </div>
+                </div>
+
+                <h2 class="section-title">Informasi Buku Terpinjam</h2>
+                <div id="borrowed-books-container">
+                </div>
+
+                <div class="section-banner-yellow">
+                    Buku Disematkan
+                </div>
+                
+                <div id="pinned-books-container">
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const API_URL = "/api/dashboard-data";
+
+        async function initDashboard() {
+            try {
+                const response = await fetch(API_URL);
+
+                if (response.status === 401) {
+                    alert("Akses ditolak. Silakan login terlebih dahulu.");
+                    window.location.href = "loginpage.html";
+                    return;
+                }
+
+                const data = await response.json();
+
+                document.getElementById('username-display').textContent = data.user.name;
+
+                document.getElementById('count-terkirim').textContent = data.borrowingData.counts.terkirim;
+                document.getElementById('count-disetujui').textContent = data.borrowingData.counts.disetujui;
+                document.getElementById('count-ditolak').textContent = data.borrowingData.counts.ditolak;
+
+                renderStatusDetails(data.borrowingData.details);
+                renderBorrowedBooks(data.borrowedBooks);
+                renderPinnedBooks(data.pinnedBooks);
+
+            } catch (error) {
+                console.error("Gagal mengambil data dari server:", error);
+                document.getElementById('username-display').textContent = "User";
+            }
+        }
+
+        function renderStatusDetails(details) {
+            const container = document.getElementById('status-detail-box');
+            if (!details || details.length === 0) {
+                container.innerHTML = '<p style="padding: 15px; text-align: center; color: #888;">Tidak ada riwayat status pengajuan.</p>';
+                return;
+            }
+            container.innerHTML = details.map(detail => `
+                <div class="detail-row ${detail.hasButton ? 'row-with-btn' : ''}">
+                    <div class="detail-info">
+                        <span class="book-title-sm">${detail.title}</span>
+                        <span class="book-status ${detail.statusClass}">${detail.statusText}</span>
+                    </div>
+                    ${detail.hasButton ? `<button class="btn-detail-sm" onclick="window.location.href='${detail.redirectUrl}'">Lihat Detail</button>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function renderBorrowedBooks(borrowedBooks) {
+            const container = document.getElementById('borrowed-books-container');
+            if (!borrowedBooks || borrowedBooks.length === 0) {
+                container.innerHTML = '<p style="padding: 20px; text-align: center; color: #888; background: #fff; border-radius: 8px;">Anda tidak sedang meminjam buku.</p>';
+                return;
+            }
+            container.innerHTML = borrowedBooks.map(book => `
+                <div class="book-list-item border-yellow">
+                    <div class="book-meta">
+                        <span class="book-main-title">${book.title}</span>
+                        <span class="book-author">${book.author}</span>
+                    </div>
+                    <div class="book-action-zone">
+                        <div class="return-info">
+                            <span class="info-label">Tanggal Pengembalian</span>
+                            <span class="info-date">${book.returnDate}</span>
+                        </div>
+                        <button class="btn-action-dark">Detail</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderPinnedBooks(pinnedBooks) {
+            const container = document.getElementById('pinned-books-container');
+            if (!pinnedBooks || pinnedBooks.length === 0) {
+                container.innerHTML = '<p style="padding: 20px; text-align: center; color: #888; background: #fff; border-radius: 8px;">Belum ada buku yang disematkan.</p>';
+                return;
+            }
+            container.innerHTML = pinnedBooks.map(book => {
+                let actionZoneHTML = '';
+                
+                if (book.type === 'available') {
+                    actionZoneHTML = `
+                        <div class="borrow-status-info">
+                            <span class="status-available">Sudah bisa dipinjam!</span>
+                            <span class="status-deadline">Pengajuan sampai <strong class="text-red">${book.deadline}</strong></span>
+                        </div>
+                        <button class="btn-action-dark">Aju</button>
+                    `;
+                } else if (book.type === 'queued') {
+                    actionZoneHTML = `
+                        <div class="queue-info">
+                            <span>Urutan <strong class="text-green">ke-${book.queueNumber}</strong></span>
+                        </div>
+                        <button class="btn-action-dark">Detail</button>
+                    `;
+                }
+
+                return `
+                    <div class="book-list-item border-yellow">
+                        <div class="book-meta">
+                            <span class="book-main-title">${book.title}</span>
+                            <span class="book-author">${book.author}</span>
+                        </div>
+                        <div class="book-action-zone">
+                            ${actionZoneHTML}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', initDashboard);
+    </script>
+</body>
+</html>

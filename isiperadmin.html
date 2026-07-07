@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku Matematika - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <style>
+        /* --- STYLE KHUSUS HALAMAN KATALOG BUKU PERPUSTAKAAN --- */
+        
+        /* Search Bar & Filter Section */
+        .search-filter-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .search-input-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input-container input {
+            width: 100%;
+            background-color: #FFF2D1;
+            border: 2px solid #F3B600;
+            border-radius: 30px;
+            padding: 10px 50px 10px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: #202E43;
+            outline: none;
+        }
+
+        .search-input-container input::placeholder {
+            color: #A99B77;
+        }
+
+        .search-input-container .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #202E43;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .filter-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-label {
+            font-size: 22px;
+            font-weight: 600;
+            color: #202E43;
+            margin-right: 10px;
+        }
+
+        .filter-dropdown {
+            background-color: #F3B600;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Grid Buku */
+        .books-catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px;
+            padding-bottom: 80px; /* Jarak untuk floating button */
+        }
+
+        .book-card {
+            background-color: #FFFFFF;
+            border: 2px solid #F3B600;
+            border-radius: 18px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        }
+
+        .card-cover-area {
+            border: 1.5px solid #202E43;
+            border-radius: 12px;
+            padding: 8px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            background-color: #FFFFFF;
+        }
+
+        .card-cover-area img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+        }
+
+        /* Badge Status Atas */
+        .status-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 9px;
+            font-weight: 600;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .badge-available {
+            background-color: #4AA900; /* Hijau Tersedia */
+        }
+
+        .badge-borrowed {
+            background-color: #A93226; /* Merah Dipinjam */
+        }
+
+        /* Informasi Buku */
+        .card-info-area {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .card-book-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #202E43;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-book-author {
+            font-size: 13px;
+            color: #555555;
+        }
+
+        /* Aksi Tombol Kartu */
+        .card-actions-wrapper {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .btn-card {
+            flex: 1;
+            border: none;
+            padding: 6px 0;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            color: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-card-detail {
+            background-color: #202E43;
+        }
+
+        .btn-card-apply {
+            background-color: #4AA900;
+        }
+
+        /* Tombol Melayang Edit */
+        .floating-edit-button {
+            position: fixed;
+            bottom: 30px;
+            right: 40px;
+            background-color: #202E43;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+        }
+
+        .floating-edit-button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logofst.png" alt="Logo UIN FST">
+                <div class="logo-text">
+                    <span class="fac">FAKULTAS</span>
+                    <span class="dept">SAINS DAN TEKNOLOGI</span>
+                </div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <nav class="sidebar-menu">
+                <a href="welpageadmin.html" class="menu-item">Dashboard</a>
+                <a href="isiperadmin.html" class="menu-item active">> Buku Perpustakaan</a> 
+                <a href="pengajuanadmin.html" class="menu-item">Pengajuan</a>
+                <a href="riwayatadmin.html" class="menu-item">Riwayat</a>
+                <a href="#" class="menu-item">Pengaturan</a>
+            </nav>
+
+            <a href="loginpage.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Buku Matematika</h1>
+                <hr class="header-line">
+            </header>
+
+            <div class="dashboard-body">
+                
+                <!-- FILTER & PENCARIAN -->
+                <div class="search-filter-wrapper">
+                    <div class="search-input-container">
+                        <input type="text" placeholder="masukkan nama buku/penulis">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    </div>
+
+                    <div class="filter-row">
+                        <span class="filter-label">Filter</span>
+                        <button class="filter-dropdown">Kategori <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></button>
+                        <button class="filter-dropdown">Penulis <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></button>
+                        <button class="filter-dropdown">Tahun Terbit <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></button>
+                        <button class="filter-dropdown">Tipe Buku <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></button>
+                    </div>
+                </div>
+
+                <!-- GRID KATALOG BUKU -->
+                <div class="books-catalog-grid">
+                    
+                    <!-- BUKU 1: Tersedia -->
+                    <div class="book-card">
+                        <div class="card-cover-area">
+                            <span class="status-badge badge-available">Tersedia</span>
+                            <img src="the-mathematical-universe.jpg" alt="The Mathematical Universe">
+                        </div>
+                        <div class="card-info-area">
+                            <span class="card-book-title">The Mathematical...</span>
+                            <span class="card-book-author">William Dunham</span>
+                        </div>
+                        <div class="card-actions-wrapper">
+                            <button class="btn-card btn-card-detail" onclick="window.location.href='detailbukuadmin.html'">Detail</button>
+                            <button class="btn-card btn-card-apply" onclick="window.location.href='ajuanbuku.html'">Ajuan</button>
+                        </div>
+                    </div>
+
+                    <!-- BUKU 2: Tersedia -->
+                    <div class="book-card">
+                        <div class="card-cover-area">
+                            <span class="status-badge badge-available">Tersedia</span>
+                            <img src="the-mathematical-universe.jpg" alt="The Mathematical Universe">
+                        </div>
+                        <div class="card-info-area">
+                            <span class="card-book-title">The Mathematical...</span>
+                            <span class="card-book-author">William Dunham</span>
+                        </div>
+                        <div class="card-actions-wrapper">
+                            <button class="btn-card btn-card-detail" onclick="window.location.href='detailbukuadmin.html'">Detail</button>
+                            <button class="btn-card btn-card-apply" onclick="window.location.href='ajuanbuku.html'">Ajuan</button>
+                        </div>
+                    </div>
+
+                    <!-- BUKU 3: Tersedia -->
+                    <div class="book-card">
+                        <div class="card-cover-area">
+                            <span class="status-badge badge-available">Tersedia</span>
+                            <img src="the-mathematical-universe.jpg" alt="The Mathematical Universe">
+                        </div>
+                        <div class="card-info-area">
+                            <span class="card-book-title">The Mathematical...</span>
+                            <span class="card-book-author">William Dunham</span>
+                        </div>
+                        <div class="card-actions-wrapper">
+                            <button class="btn-card btn-card-detail" onclick="window.location.href='detailbukuadmin.html'">Detail</button>
+                            <button class="btn-card btn-card-apply" onclick="window.location.href='ajuanbuku.html'">Ajuan</button>
+                        </div>
+                    </div>
+
+                    <!-- BUKU 4: Dipinjam -->
+                    <div class="book-card">
+                        <div class="card-cover-area">
+                            <span class="status-badge badge-borrowed">Dipinjam</span>
+                            <img src="the-mathematical-universe.jpg" alt="The Mathematical Universe">
+                        </div>
+                        <div class="card-info-area">
+                            <span class="card-book-title">The Mathematical...</span>
+                            <span class="card-book-author">William Dunham</span>
+                        </div>
+                        <div class="card-actions-wrapper">
+                            <button class="btn-card btn-card-detail" style="width: 100%;" onclick="window.location.href='detailbukuadmin.html'">Detail</button>
+                        </div>
+                    </div>
+
+                    <!-- BUKU 5: Tersedia -->
+                    <div class="book-card">
+                        <div class="card-cover-area">
+                            <span class="status-badge badge-available">Tersedia</span>
+                            <img src="the-mathematical-universe.jpg" alt="The Mathematical Universe">
+                        </div>
+                        <div class="card-info-area">
+                            <span class="card-book-title">The Mathematical...</span>
+                            <span class="card-book-author">William Dunham</span>
+                        </div>
+                        <div class="card-actions-wrapper">
+                            <button class="btn-card btn-card-detail" onclick="window.location.href='detailbukuadmin.html'">Detail</button>
+                            <button class="btn-card btn-card-apply" onclick="window.location.href='ajuanbuku.html'">Ajuan</button>
+                        </div>
+                    </div>
+
+                    <!-- BUKU 6: Tersedia -->
+                    <div class="book-card">
+                        <div class="card-cover-area">
+                            <span class="status-badge badge-available">Tersedia</span>
+                            <img src="the-mathematical-universe.jpg" alt="The Mathematical Universe">
+                        </div>
+                        <div class="card-info-area">
+                            <span class="card-book-title">The Mathematical...</span>
+                            <span class="card-book-author">William Dunham</span>
+                        </div>
+                        <div class="card-actions-wrapper">
+                            <button class="btn-card btn-card-detail" onclick="window.location.href='detailbukuadmin.html'">Detail</button>
+                            <button class="btn-card btn-card-apply" onclick="window.location.href='ajuanbuku.html'">Ajuan</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- FLOATING BUTTON EDIT -->
+    <button class="floating-edit-button">Edit</button>
+
+</body>
+</html>

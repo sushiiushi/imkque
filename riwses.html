@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Riwayat Diterima - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <link rel="stylesheet" href="riwtol-style.css">
+    <style>
+        /* Gaya spesifik tambahan untuk elemen status hijau */
+        .info-label-double-line {
+            line-height: 1.2;
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .info-label-double-line span {
+            font-size: 10px;
+            text-transform: lowercase;
+            font-weight: 400;
+        }
+
+        .text-ontime {
+            color: #4cd137;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        .synopsis-dropdown-bar {
+            background-color: #f2be00;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px 24px;
+            border-radius: 10px;
+            margin-top: 15px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logofst.png" alt="Logo UIN FST">
+                <div class="logo-text">
+                    <span class="fac">FAKULTAS</span>
+                    <span class="dept">SAINS DAN TEKNOLOGI</span>
+                </div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <nav class="sidebar-menu">
+                <a href="welpageuser.html" class="menu-item">Dashboard</a>
+                <a href="bukperuser.html" class="menu-item">Buku Perpustakaan</a>
+                <a href="buksem.html" class="menu-item">Buku Disematkan</a>
+                <a href="riwuser.html" class="menu-item active">> Riwayat</a>
+                <a href="#" class="menu-item">Pengaturan</a>
+            </nav>
+
+            <a href="loginpage.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Riwayat Peminjaman</h1>
+                <hr class="header-line">
+            </header>
+
+            <div class="detail-rejected-container">
+                
+                <div class="top-right-badge" onclick="window.location.href='formpengajuan.html';">Aju Peminjaman</div>
+
+                <div class="main-book-title-banner">
+                    The Mathematical Universe
+                </div>
+
+                <div class="detail-flex-layout">
+                    <div class="book-cover-wrapper">
+                        <img src="the-mathematical-universe.jpg" alt="The Mathematical Universe Cover" class="cover-image">
+                    </div>
+
+                    <div class="book-info-spec">
+                        
+                        <div class="info-row">
+                            <div class="info-label">Penulis</div>
+                            <div class="info-value">William Dunham</div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">Tahun</div>
+                            <div class="info-value">1998</div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">Kategori</div>
+                            <div class="info-value">Matematika</div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">Status</div>
+                            <div class="info-value">Diterima</div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label info-label-double-line">Lama <span>dipinjam</span></div>
+                            <div class="info-value">01/06/2026 - 12/06/2026</div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label info-label-double-line">Tanggal <span>dikembalikan</span></div>
+                            <div class="info-value">12/06/2026 <span class="text-ontime">ON-TIME!</span></div>
+                        </div>
+
+                        <div class="synopsis-dropdown-bar">
+                            <span>Sinopsis</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

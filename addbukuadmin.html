@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masukkan Buku Baru - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <style>
+        /* --- STYLE KHUSUS INPUT TAMBAH BUKU BARU --- */
+        .detail-card-container {
+            background-color: #F4F7FC;
+            border-radius: 20px;
+            padding: 35px 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 10px;
+        }
+
+        /* Banner input untuk Nama Buku Atas */
+        .book-title-input-banner {
+            background-color: #F3B600;
+            padding: 6px 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .book-title-input-banner input {
+            background: transparent;
+            border: none;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #FFFFFF;
+            text-align: center;
+            width: 100%;
+        }
+
+        .book-title-input-banner input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .detail-main-content {
+            display: flex;
+            gap: 45px;
+            align-items: flex-start;
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        /* Kotak besar Upload Cover Kuning */
+        .upload-cover-box {
+            background-color: #F3B600;
+            border: 2px solid #202E43;
+            border-radius: 12px;
+            max-width: 280px;
+            width: 100%;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .upload-cover-box i {
+            font-size: 80px;
+            font-weight: 300;
+        }
+
+        .upload-cover-box span {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .info-table-specs {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex-grow: 1;
+            max-width: 550px;
+        }
+
+        .spec-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .spec-row.align-top {
+            align-items: flex-start;
+        }
+
+        .spec-label {
+            background-color: #F3B600;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 0;
+            width: 110px;
+            text-align: center;
+            border-radius: 8px;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+
+        /* Wrapper field input formulir */
+        .add-input-wrapper {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .add-input-wrapper input,
+        .add-input-wrapper select {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            color: #202E43;
+            font-weight: 400;
+            border: none;
+            background: transparent;
+            width: 100%;
+            outline: none;
+            padding: 2px 0;
+        }
+
+        .add-input-wrapper textarea {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: #202E43;
+            font-weight: 400;
+            border: none;
+            background: transparent;
+            width: 100%;
+            height: 120px;
+            resize: none;
+            outline: none;
+            line-height: 1.4;
+        }
+
+        .add-input-wrapper input::placeholder,
+        .add-input-wrapper textarea::placeholder {
+            color: #A0AAB5;
+        }
+
+        /* Dropdown status */
+        .add-input-wrapper select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23202E43' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+            background-repeat: no-repeat;
+            background-position: right center;
+            padding-right: 20px;
+            cursor: pointer;
+            color: #A0AAB5; /* Default placeholder color */
+        }
+
+        .add-input-wrapper select.selected {
+            color: #202E43;
+        }
+
+        /* Area tombol simpan */
+        .btn-save-container {
+            display: flex;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-task-save {
+            background-color: #202E43;
+            color: #FFFFFF;
+            border: none;
+            padding: 8px 35px;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-task-save:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logofst.png" alt="Logo UIN FST">
+                <div class="logo-text">
+                    <span class="fac">FAKULTAS</span>
+                    <span class="dept">SAINS DAN TEKNOLOGI</span>
+                </div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <nav class="sidebar-menu">
+                <a href="welpageadmin.html" class="menu-item">Dashboard</a>
+                <a href="bukperadmin.html" menu-item active">> Buku Perpustakaan</a> 
+                <a href="pengajuanadmin.html" class="menu-item">Pengajuan</a>
+                <a href="riwayatadmin.html" class="menu-item">Riwayat</a>
+                <a href="#" class="menu-item">Pengaturan</a>
+            </nav>
+
+            <a href="loginpage.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Masukkan Buku Baru</h1>
+                <hr class="header-line">
+            </header>
+
+            <div class="dashboard-body">
+                
+                <form class="detail-card-container">
+                    
+                    <div class="book-title-input-banner">
+                        <input type="text" placeholder="Nama Buku" required>
+                    </div>
+
+                    <div class="detail-main-content">
+                        
+                        <label class="upload-cover-box" for="cover-file-input">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Upload Cover</span>
+                            <input type="file" id="cover-file-input" style="display: none;" accept="image/*">
+                        </label>
+
+                        <div class="info-table-specs">
+                            
+                            <div class="spec-row">
+                                <span class="spec-label">Penulis</span>
+                                <div class="add-input-wrapper">
+                                    <input type="text" placeholder="Masukkan Penulis" required>
+                                </div>
+                            </div>
+
+                            <div class="spec-row">
+                                <span class="spec-label">Tahun</span>
+                                <div class="add-input-wrapper">
+                                    <input type="text" placeholder="Tahun Terbit" required>
+                                </div>
+                            </div>
+
+                            <div class="spec-row">
+                                <span class="spec-label">Kategori</span>
+                                <div class="add-input-wrapper">
+                                    <input type="text" placeholder="Kategori Buku" required>
+                                </div>
+                            </div>
+
+                            <div class="spec-row align-top">
+                                <span class="spec-label">Sinopsis</span>
+                                <div class="add-input-wrapper">
+                                    <textarea placeholder="Masukkan Sinopsis" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="spec-row">
+                                <span class="spec-label">Status</span>
+                                <div class="add-input-wrapper">
+                                    <select id="status-select" onchange="this.classList.add('selected')" required>
+                                        <option value="" disabled selected hidden>Status dan Keterediaan</option>
+                                        <option value="Tersedia">Baik, tersedia</option>
+                                        <option value="Dipinjam">Buku dipinjam</option>
+                                        <option value="Rusak">Rusak / Perbaikan</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="spec-row" style="margin-top: 5px;">
+                                <div style="width: 110px; flex-shrink: 0;"></div> <div class="btn-save-container">
+                                    <button type="submit" class="btn-task-save">Simpan</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

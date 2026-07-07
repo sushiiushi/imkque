@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Riwayat Peminjaman - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <style>
+        /* --- STYLE KHUSUS HALAMAN DETAIL RIWAYAT --- */
+        .detail-card-container {
+            background-color: #F4F7FC;
+            border-radius: 20px;
+            padding: 35px 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 10px;
+        }
+
+        .book-title-banner {
+            background-color: #F3B600;
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 8px 30px;
+            border-radius: 10px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .detail-main-content {
+            display: flex;
+            gap: 45px;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .book-cover-wrapper {
+            background-color: #FFFFFF;
+            padding: 12px;
+            border-radius: 12px;
+            border: 2px solid #202E43;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 280px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .book-cover-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .info-table-specs {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .spec-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .spec-label {
+            background-color: #F3B600;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 0;
+            width: 110px;
+            text-align: center;
+            border-radius: 8px;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+        
+        .spec-label-sm {
+            font-size: 11px;
+            line-height: 1.1;
+            padding: 4px 0;
+        }
+
+        .spec-value {
+            font-size: 18px;
+            color: #202E43;
+            font-weight: 500;
+        }
+
+        .text-green-status {
+            color: #2ECC71;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logofst.png" alt="Logo UIN FST">
+                <div class="logo-text">
+                    <span class="fac">FAKULTAS</span>
+                    <span class="dept">SAINS DAN TEKNOLOGI</span>
+                </div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <nav class="sidebar-menu">
+                <a href="welpageadmin.html" class="menu-item">Dashboard</a>
+                <a href="bukperadmin.html" class="menu-item">Buku Perpustakaan</a> 
+                <a href="pengajuanadmin.html" class="menu-item">Pengajuan</a>
+                <a href="riwayatadmin.html" class="menu-item active">> Riwayat</a>
+                <a href="#" class="menu-item">Pengaturan</a>
+            </nav>
+
+            <a href="loginpage.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Riwayat Peminjaman</h1>
+                <hr class="header-line">
+            </header>
+
+            <div class="dashboard-body">
+                
+                <div class="detail-card-container">
+                    
+                    <div class="book-title-banner">
+                        The Mathematical Universe
+                    </div>
+
+                    <div class="detail-main-content">
+                        
+                        <div class="book-cover-wrapper">
+                            <img src="the-mathematical-universe.jpg" alt="The Mathematical Universe Cover">
+                        </div>
+
+                        <div class="info-table-specs">
+                            
+                            <div class="spec-row">
+                                <span class="spec-label">Peminjam</span>
+                                <span class="spec-value">Zahra Rumampuk</span>
+                            </div>
+
+                            <div class="spec-row">
+                                <span class="spec-label">Prodi</span>
+                                <span class="spec-value">Matematika</span>
+                            </div>
+
+                            <div class="spec-row">
+                                <span class="spec-label">Status</span>
+                                <span class="spec-value">Diterima</span>
+                            </div>
+
+                            <div class="spec-row">
+                                <div class="spec-label spec-label-sm">Lama<br><span style="font-size: 8px; font-weight: 300;">dipinjam</span></div>
+                                <span class="spec-value">01/06/2026 - 12/06/2026</span>
+                            </div>
+
+                            <div class="spec-row">
+                                <div class="spec-label spec-label-sm">Tanggal<br><span style="font-size: 8px; font-weight: 300;">dikembalikan</span></div>
+                                <span class="spec-value">12/06/2026 &nbsp;<span class="text-green-status">ON-TIME!</span></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="left-section">
+            <div class="form-wrapper">
+                <h2>Selamat datang!</h2>
+                <p class="subtitle">Silahkan isi detail anda untuk mendaftarkan diri anda</p>
+
+                <form>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="contoh@gmail.com">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Kata Sandi</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" placeholder="masukkan password anda">
+                            <i class="fa-regular fa-eye toggle-password"></i>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="confirm-password">Konfirmasi Kata Sandi</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="confirm-password" placeholder="masukkan password anda">
+                            <i class="fa-regular fa-eye toggle-password"></i>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" style="margin-top: 20px;" onclick="window.location.href='welpageuser.html'">Daftar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="logo-wrapper">
+                <img src="logofst.png" alt="Logo UIN FST" class="logo">
+                <h1>Layanan<br>Perpustakaan FST</h1>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

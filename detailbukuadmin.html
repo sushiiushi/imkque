@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Informasi Buku - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <style>
+        /* --- STYLE KHUSUS HALAMAN INFORMASI BUKU --- */
+        .detail-card-container {
+            background-color: #F4F7FC;
+            border-radius: 20px;
+            padding: 35px 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 10px;
+        }
+
+        .book-title-banner {
+            background-color: #F3B600;
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 8px 30px;
+            border-radius: 10px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .detail-main-content {
+            display: flex;
+            gap: 45px;
+            align-items: flex-start;
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .book-cover-wrapper {
+            background-color: #FFFFFF;
+            padding: 12px;
+            border-radius: 12px;
+            border: 2px solid #202E43;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 280px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .book-cover-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .info-table-specs {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex-grow: 1;
+            max-width: 550px;
+        }
+
+        .spec-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .spec-label {
+            background-color: #F3B600;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 0;
+            width: 110px;
+            text-align: center;
+            border-radius: 8px;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+
+        .spec-value {
+            font-size: 18px;
+            color: #202E43;
+            font-weight: 500;
+            line-height: 1.4;
+            text-align: justify;
+        }
+
+        /* Grouping Tombol Aksi di Kanan Bawah */
+        .book-admin-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .btn-admin-task {
+            border: none;
+            padding: 8px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #FFFFFF;
+            transition: opacity 0.2s;
+        }
+
+        .btn-task-edit {
+            background-color: #202E43; /* Warna gelap */
+        }
+
+        .btn-task-info {
+            background-color: #202E43; /* Warna gelap senada */
+        }
+
+        .btn-admin-task:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logofst.png" alt="Logo UIN FST">
+                <div class="logo-text">
+                    <span class="fac">FAKULTAS</span>
+                    <span class="dept">SAINS DAN TEKNOLOGI</span>
+                </div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <nav class="sidebar-menu">
+                <a href="welpageadmin.html" class="menu-item">Dashboard</a>
+                <a href="bukperadmin.html" class="menu-item active">> Buku Perpustakaan</a> 
+                <a href="pengajuanadmin.html" class="menu-item">Pengajuan</a>
+                <a href="riwayatadmin.html" class="menu-item">Riwayat</a>
+                <a href="#" class="menu-item">Pengaturan</a>
+            </nav>
+
+            <a href="loginpage.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Informasi Buku</h1>
+                <hr class="header-line">
+            </header>
+
+            <div class="dashboard-body">
+                
+                <div class="detail-card-container">
+                    
+                    <div class="book-title-banner">
+                        The Mathematical Universe
+                    </div>
+
+                    <div class="detail-main-content">
+                        
+                        <div class="book-cover-wrapper">
+                            <img src="the-mathematical-universe.jpg" alt="The Mathematical Universe Cover">
+                        </div>
+
+                        <div class="info-table-specs">
+                            
+                            <div class="spec-row">
+                                <span class="spec-label">Penulis</span>
+                                <span class="spec-value">William Dunham</span>
+                            </div>
+
+                            <div class="spec-row">
+                                <span class="spec-label">Tahun</span>
+                                <span class="spec-value">1998</span>
+                            </div>
+
+                            <div class="spec-row">
+                                <span class="spec-label">Kategori</span>
+                                <span class="spec-value">Matematika</span>
+                            </div>
+
+                            <div class="spec-row">
+                                <span class="spec-label">Sinopsis</span>
+                                <span class="spec-value" style="font-size: 13px; font-weight: 400;">
+                                    "The Mathematical Universe" adalah kumpulan esai pendek yang solid, masing-masing membahas topik matematika tertentu. Judul-judulnya beragam, mulai dari "Masalah Isoperimetri" hingga "Di Mana Para Wanita?". Penulis Dunham berhasil mempertahankan nada percakapan sambil merujuk pada diagram, persamaan, dan argumen yang ketat di sepanjang buku.
+                                </span>
+                            </div>
+
+                            <div class="spec-row">
+                                <span class="spec-label">Status</span>
+                                <span class="spec-value">Baik, tersedia</span>
+                            </div>
+
+                            <div class="spec-row" style="justify-content: flex-start; margin-top: 5px;">
+                                <div style="width: 110px; flex-shrink: 0;"></div> <div class="book-admin-actions">
+                                    <button class="btn-admin-task btn-task-edit" onclick="window.location.href='editbukuadmin.html'">Edit</button>
+                                    <button class="btn-admin-task btn-task-info" onclick="window.location.href='ajuanbuku.html'">Pengajuan</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

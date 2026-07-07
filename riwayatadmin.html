@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Peminjaman Buku Admin - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <style>
+        /* Penyesuaian inline khusus untuk menyelaraskan susunan Banner + Badge Status kanan */
+        .banner-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .badge-status {
+            padding: 6px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #FFFFFF;
+            text-align: center;
+            min-width: 110px;
+        }
+
+        .bg-green {
+            background-color: #2ECC71; /* Warna hijau 'Diterima' */
+        }
+
+        .bg-red {
+            background-color: #A93226; /* Warna merah 'Ditolak' */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logofst.png" alt="Logo UIN FST">
+                <div class="logo-text">
+                    <span class="fac">FAKULTAS</span>
+                    <span class="dept">SAINS DAN TEKNOLOGI</span>
+                </div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <nav class="sidebar-menu">
+                <a href="welpageadmin.html" class="menu-item">Dashboard</a>
+                <a href="bukperadmin.html" class="menu-item">Buku Perpustakaan</a> 
+                <a href="pengajuanadmin.html" class="menu-item">Pengajuan</a>
+                <a href="riwayatadmin.html" class="menu-item active">> Riwayat</a>
+                <a href="#" class="menu-item">Pengaturan</a>
+            </nav>
+
+            <a href="loginpage.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Riwayat Peminjaman Buku</h1>
+                <hr class="header-line">
+            </header>
+
+            <div class="dashboard-body">
+                
+                <div class="section-banner-yellow banner-flex">
+                    <span>Riwayat Peminjaman</span>
+                    <div class="badge-status bg-green">Diterima</div>
+                </div>
+
+                <div class="book-list-item border-yellow">
+                    <div class="book-meta">
+                        <span class="book-main-title">Cosmology & The Universe: A Brief History of Time</span>
+                        <span class="book-author">Stephen Hawking</span>
+                    </div>
+                    <div class="book-action-zone">
+                        <button class="btn-action-dark" onclick="window.location.href='riwsesadmin.html'">Lihat Detail</button>
+                    </div>
+                </div>
+
+                <div class="book-list-item border-yellow">
+                    <div class="book-meta">
+                        <span class="book-main-title">The Quantum & The Cosmos: The Elegant Universe</span>
+                        <span class="book-author" onclick="window.location.href='riwsesadmin.html'">Brian Greene</span>
+                    </div>
+                    <div class="book-action-zone">
+                        <button class="btn-action-dark">Lihat Detail</button>
+                    </div>
+                </div>
+
+                <div class="section-banner-yellow banner-flex" style="margin-top: 30px;">
+                    <span>Riwayat Peminjaman</span>
+                    <div class="badge-status bg-red">Ditolak</div>
+                </div>
+
+                <div class="book-list-item border-yellow">
+                    <div class="book-meta">
+                        <span class="book-main-title">The Selfish Gene</span>
+                        <span class="book-author">Richard Dawkins</span>
+                    </div>
+                    <div class="book-action-zone">
+                        <button class="btn-action-dark" onclick="window.location.href='riwtoladmin.html'">Lihat Detail</button>
+                    </div>
+                </div>
+
+                <div class="book-list-item border-yellow">
+                    <div class="book-meta">
+                        <span class="book-main-title">The Eighth Day of Creation: Makers of the Revolution in Biology</span>
+                        <span class="book-author">Horace Freeland Judson</span>
+                    </div>
+                    <div class="book-action-zone">
+                        <button class="btn-action-dark" onclick="window.location.href='riwtoladmin.html'">Lihat Detail</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

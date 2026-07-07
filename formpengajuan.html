@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Peminjaman Buku - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <link rel="stylesheet" href="formpengajuan-style.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logofst.png" alt="Logo UIN FST">
+                <div class="logo-text">
+                    <span class="fac">FAKULTAS</span>
+                    <span class="dept">SAINS DAN TEKNOLOGI</span>
+                </div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <nav class="sidebar-menu">
+                <a href="welpageuser.html" class="menu-item">Dashboard</a>
+                <a href="bukperuser.html" class="menu-item active">> Buku Perpustakaan</a>
+                <a href="buksem.html" class="menu-item">Buku Disematkan</a>
+                <a href="riwuser.html" class="menu-item">Riwayat</a>
+                <a href="#" class="menu-item">Pengaturan</a>
+            </nav>
+
+            <a href="loginpage.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Form Peminjaman</h1>
+                <hr class="header-line">
+            </header>
+
+            <div class="form-main-card">
+                
+                <div class="form-left-side">
+                    <form action="#" method="POST" onsubmit="window.location.href='ajusukses.html'; return false;">
+                        
+                        <div class="input-field-group">
+                            <label for="nama_pengaju">Nama Pengaju</label>
+                            <input type="text" id="nama_pengaju" placeholder="masukkan nama anda" required>
+                        </div>
+
+                        <div class="input-field-group">
+                            <label for="program_studi">Program Studi</label>
+                            <div class="select-wrapper">
+                                <select id="program_studi" required>
+                                    <option value="" disabled selected hidden>pilih program studi yang tersedia</option>
+                                    <option value="Informatika">Teknik Informatika</option>
+                                    <option value="Sistem Informasi">Sistem Informasi</option>
+                                    <option value="Matematika">Matematika</option>
+                                    <option value="Fisika">Fisika</option>
+                                    <option value="Kimia">Kimia</option>
+                                    <option value="Biologi">Biologi</option>
+                                    <option value="Agribisnis">Agribisnis</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="input-field-group">
+                            <label for="lama_peminjaman">Lama Peminjaman</label>
+                            <div class="date-input-wrapper">
+                                <input type="text" id="lama_peminjaman" placeholder="Lama pengajuan" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                                <i class="fa-regular fa-calendar date-icon"></i>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-submit-form">Ajukan Peminjaman</button>
+                    </form>
+                </div>
+
+                <div class="center-divider"></div>
+
+                <div class="form-right-side">
+                    <span class="badge-status-top">Buku dipinjam</span>
+                    
+                    <div class="image-box-preview">
+                        <img src="the-mathematical-universe.jpg" alt="Preview Cover">
+                    </div>
+
+                    <div class="text-tag-blue">The Mathematical Universe</div>
+                    <div class="text-tag-yellow">William Dunham</div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

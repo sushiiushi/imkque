@@ -1,0 +1,364 @@
+/* Reset Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    background-color: #fcfcfc;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+/* --- SIDEBAR STYLE --- */
+.sidebar {
+    width: 320px;
+    background-color: #f2be00;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 35px 24px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar-header img {
+    width: 50px;
+    height: auto;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-divider {
+    border: 0;
+    height: 1.5px;
+    background-color: #ffffff;
+    margin: 25px 0;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-item {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.menu-item:hover, .menu-item.active {
+    color: #ffffff;
+    font-weight: 700;
+    transform: translateX(4px);
+}
+
+.logout-btn {
+    position: absolute;
+    bottom: 40px;
+    left: 24px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- MAIN CONTENT STYLE --- */
+.main-content {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 40px 50px;
+    overflow-y: auto;
+}
+
+.content-header h1 {
+    font-size: 32px;
+    color: #1a365d;
+    font-weight: 700;
+}
+
+.header-line {
+    border: 0;
+    height: 3px;
+    background-color: #f2be00;
+    margin-top: 12px;
+    margin-bottom: 30px;
+}
+
+/* Reusable Section Title */
+.section-title {
+    font-size: 22px;
+    color: #1a365d;
+    font-weight: 700;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* --- SECTION 1: STATUS PEMINJAMAN LAYOUT --- */
+.status-container {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 35px;
+    align-items: stretch;
+}
+
+.status-card {
+    flex: 1;
+    max-width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.card-yellow {
+    background-color: #f2be00;
+}
+
+.card-outline {
+    background-color: #ffffff;
+    border: 3px solid #f2be00;
+}
+
+.font-white { color: #ffffff; }
+.font-blue { color: #1a365d; }
+
+.status-number {
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.status-label {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* Detail Box Kanan */
+.status-detail-box {
+    flex: 2;
+    background-color: #f2be00;
+    border-radius: 25px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.detail-row {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row-with-btn {
+    padding-right: 10px;
+}
+
+.detail-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-title-sm {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a365d;
+}
+
+.book-status {
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 1px;
+}
+
+/* Status teks warna */
+.status-blue { color: #2d689c; }
+.status-green { color: #2e7d32; }
+.status-red { color: #c62828; }
+
+.btn-detail-sm {
+    background-color: #1a365d;
+    color: #ffffff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* --- LAYOUT BARIS LIST BUKU (COMMON) --- */
+.book-list-item {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.border-yellow {
+    border: 2px solid #f2be00;
+}
+
+.book-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-main-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a365d;
+}
+
+.book-author {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.book-action-zone {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Detail Teks Aksi Kanan */
+.return-info, .borrow-status-info {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.info-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a365d;
+}
+
+.info-date {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a365d;
+}
+
+.status-available {
+    color: #4cd137;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.status-deadline, .queue-info {
+    font-size: 12px;
+    color: #1a365d;
+}
+
+.queue-info {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.text-red { color: #c62828; }
+.text-green { color: #2e7d32; font-size: 22px; }
+
+/* Tombol Gelap Samping List Buku */
+.btn-action-dark {
+    background-color: #1a365d;
+    color: #ffffff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    min-width: 85px;
+}
+
+/* --- SECTION BANNER (Buku Disematkan Kuning) --- */
+.section-banner-yellow {
+    background-color: #f2be00;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 10px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+.status-detail-box .detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px; /* Menyamakan padding agar tombol presisi */
+}
+
+/* 2. Menambahkan tombol "Lihat Detail" mini ke baris pertama dan kedua kotak kuning */
+.status-detail-box .detail-row::after {
+    content: "Lihat Detail";
+    background-color: #1a365d;
+    color: #ffffff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* 3. Menghilangkan efek ::after duplikat khusus untuk baris ketiga yang sudah punya tag <button> */
+.status-detail-box .detail-row.row-with-btn::after {
+    display: none;
+}
+
+/* 4. Menyelaraskan teks keterlambatan agar sejajar ke samping dengan tombol (seperti di gambar) */
+.book-action-zone {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.book-action-zone .return-info {
+    margin-right: 5px;
+}

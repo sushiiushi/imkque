@@ -1,0 +1,131 @@
+/* --- CONTAINER DETAIL UTAMA --- */
+.detail-rejected-container {
+    background-color: #f7f9fc;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    padding: 40px;
+    margin-top: 20px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+/* Badge Kecil Kanan Atas */
+.top-right-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #1e293b;
+    color: #ffffff;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* Banner Judul Buku Tengah */
+.main-book-title-banner {
+    background-color: #f2be00;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px 40px;
+    border-radius: 12px;
+    width: fit-content;
+    margin: 0 auto 35px auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* --- LAYOUT FLEX SPLIT --- */
+.detail-flex-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Sisi Kiri - Cover */
+.book-cover-wrapper {
+    flex: 1;
+    max-width: 380px;
+    background-color: #ffffff;
+    border: 3px solid #1a365d;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Sisi Kanan - Data Informasi */
+.book-info-spec {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Baris Info */
+.info-row {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #333333;
+}
+
+.info-label {
+    background-color: #f2be00;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 8px 0;
+    width: 130px;
+    text-align: center;
+    border-radius: 10px;
+    margin-right: 25px;
+    flex-shrink: 0;
+}
+
+.info-value {
+    font-weight: 500;
+    color: #1a202c;
+}
+
+/* Khusus Penanda Status & Alasan */
+.font-bold-status {
+    font-weight: 600;
+}
+.font-bold-reason {
+    font-weight: 600;
+}
+
+/* Bar Sinopsis Kuning Panjang di Bawah */
+.synopsis-banner {
+    background-color: #f2be00;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 24px;
+    border-radius: 10px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+/* Responsif Layatan Tablet / Handphone */
+@media (max-width: 992px) {
+    .detail-flex-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+    .book-cover-wrapper {
+        max-width: 280px;
+    }
+    .book-info-spec {
+        width: 100%;
+    }
+}

@@ -1,0 +1,103 @@
+    /* --- SEARCH BAR --- */
+.search-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 50px 12px 24px;
+    font-size: 16px;
+    border: 2px solid #f2be00;
+    border-radius: 30px;
+    background-color: #fdfbf7;
+    outline: none;
+    color: #333333;
+}
+
+.search-input::placeholder {
+    color: #c4c4c4;
+}
+
+.search-icon {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #1a365d;
+    cursor: pointer;
+}
+
+/* --- FILTER SECTION --- */
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.filter-label {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a365d;
+    margin-right: 8px;
+}
+
+.filter-dropdown {
+    background-color: #f2be00;
+    color: #ffffff;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* --- GRID KATEGORI --- */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 Kolom menyamping */
+    gap: 24px;
+    padding-bottom: 40px;
+}
+
+.category-card {
+    height: 200px;
+    border-radius: 25px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end; /* Teks di pojok bawah */
+    padding: 24px 30px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.category-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsif untuk tablet/HP */
+@media (max-width: 992px) {
+    .category-grid {
+        grid-template-columns: 1fr; /* Jadi 1 kolom jika layar kecil */
+    }
+    .category-title {
+        font-size: 28px;
+    }
+}

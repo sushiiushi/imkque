@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Riwayat Ditolak - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <link rel="stylesheet" href="riwtol-style.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logofst.png" alt="Logo UIN FST">
+                <div class="logo-text">
+                    <span class="fac">FAKULTAS</span>
+                    <span class="dept">SAINS DAN TEKNOLOGI</span>
+                </div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <nav class="sidebar-menu">
+                <a href="welpageuser.html" class="menu-item">Dashboard</a>
+                <a href="bukperuser.html" class="menu-item">Buku Perpustakaan</a>
+                <a href="buksem.html" class="menu-item">Buku Disematkan</a>
+                <a href="riwuser.html" class="menu-item active">> Riwayat</a>
+                <a href="#" class="menu-item">Pengaturan</a>
+            </nav>
+
+            <a href="loginpage.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Riwayat Peminjaman</h1>
+                <hr class="header-line">
+            </header>
+
+            <div class="detail-rejected-container">
+                
+                <div class="top-right-badge">Aju Peminjaman</div>
+
+                <div class="main-book-title-banner">
+                    The Mathematical Universe
+                </div>
+
+                <div class="detail-flex-layout">
+                    <div class="book-cover-wrapper">
+                        <img src="the-mathematical-universe.jpg" class="cover-image">
+                    </div>
+
+                    <div class="book-info-spec">
+                        
+                        <div class="info-row">
+                            <div class="info-label">Penulis</div>
+                            <div class="info-value">William Dunham</div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">Tahun</div>
+                            <div class="info-value">1998</div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">Kategori</div>
+                            <div class="info-value">Matematika</div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label font-bold-status">Status</div>
+                            <div class="info-value font-bold-status">Ditolak</div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label font-bold-reason">Alasan</div>
+                            <div class="info-value">Buku rusak</div>
+                        </div>
+
+                        <div class="synopsis-banner">
+                            Sinopsis
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

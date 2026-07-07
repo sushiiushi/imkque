@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengajuan Diterima - Layanan Perpustakaan FST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <style>
+        /* --- STYLE KHUSUS HALAMAN SUKSES MENERIMA (SPLIT SECTION) --- */
+        .submission-card-container {
+            background-color: #F4F7FC;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 40px;
+            margin-top: 10px;
+            position: relative;
+            align-items: center;
+        }
+
+        /* Pembatas Vertikal di Tengah */
+        .submission-card-container::before {
+            content: "";
+            position: absolute;
+            top: 40px;
+            bottom: 40px;
+            left: 55%;
+            width: 2px;
+            background-color: #202E43;
+            opacity: 0.8;
+        }
+
+        /* Bagian Kiri: Status Sukses */
+        .status-left-section {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Lingkaran Centang Hijau */
+        .success-checkmark-circle {
+            width: 110px;
+            height: 110px;
+            background-color: #4AA900;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 55px;
+            box-shadow: 0 4px 10px rgba(74, 169, 0, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .status-left-section h2 {
+            font-size: 26px;
+            font-weight: 600;
+            color: #202E43;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        .status-left-section p {
+            font-size: 14px;
+            color: #202E43;
+            margin: 0;
+        }
+
+        /* Tombol Kembali ke Dashboard */
+        .btn-back-dashboard {
+            background-color: #202E43;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-back-dashboard:hover {
+            opacity: 0.9;
+        }
+
+        /* Bagian Kanan: Visual Buku */
+        .book-right-section {
+            width: 45%;
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge-top-info {
+            background-color: #F3B600;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 20px;
+            border-radius: 6px;
+        }
+
+        .book-cover-box {
+            background-color: #FFFFFF;
+            padding: 10px;
+            border-radius: 12px;
+            border: 2px solid #202E43;
+            max-width: 220px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .book-cover-box img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .book-meta-tag {
+            width: 100%;
+            max-width: 240px;
+            text-align: center;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .tag-title {
+            background-color: #202E43;
+            color: #FFFFFF;
+        }
+
+        .tag-author {
+            background-color: #F3B600;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logofst.png" alt="Logo UIN FST">
+                <div class="logo-text">
+                    <span class="fac">FAKULTAS</span>
+                    <span class="dept">SAINS DAN TEKNOLOGI</span>
+                </div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <nav class="sidebar-menu">
+                <a href="welpageadmin.html" class="menu-item">Dashboard</a>
+                <a href="bukperadmin.html" class="menu-item">Buku Perpustakaan</a> 
+                <a href="pengajuanadmin.html" class="menu-item active">> Pengajuan</a>
+                <a href="riwayatadmin.html" class="menu-item">Riwayat</a>
+                <a href="#" class="menu-item">Pengaturan</a>
+            </nav>
+
+            <a href="loginpage.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Detail Pengajuan</h1>
+                <hr class="header-line">
+            </header>
+
+            <div class="dashboard-body">
+                
+                <!-- CONTAINER LAYOUT BELAH DUA -->
+                <div class="submission-card-container">
+                    
+                    <!-- SISI KIRI: NOTIFIKASI SUKSES DITERIMA -->
+                    <div class="status-left-section">
+                        <div class="success-checkmark-circle">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <h2>Ajuan Peminjaman<br>Telah Diterima!</h2>
+                        <p>Surat telah terkirim kepada pengaju</p>
+                        
+                        <a href="welpageadmin.html" class="btn-back-dashboard">Kembali ke Dashboard</a>
+                    </div>
+
+                    <!-- SISI KANAN: PREVIEW SAMPUL & ATRIBUT BUKU -->
+                    <div class="book-right-section">
+                        <div class="badge-top-info">Buku dipinjam</div>
+                        
+                        <div class="book-cover-box">
+                            <img src="the-mathematical-universe.jpg" alt="The Mathematical Universe">
+                        </div>
+
+                        <div class="book-meta-tag tag-title">The Mathematical Universe</div>
+                        <div class="book-meta-tag tag-author">William Dunham</div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
