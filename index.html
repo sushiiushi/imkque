@@ -52,31 +52,17 @@
     </div>
 
     <script>
-    document.getElementById('loginForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
-        
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // This stops the page from reloading
 
-        try {
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
-            });
+            // Get the values
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-            const data = await response.json();
-
-            if (data.success) {
-                window.location.href = data.redirectTo;
-            } else {
-                alert(data.message);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Gagal terhubung ke server backend.');
-        }
-    });
+            // Add your validation logic here if needed
+            // For now, it will simply redirect
+            window.location.href = 'welpageuser.html';
+        });
     </script>
 
 </body>
